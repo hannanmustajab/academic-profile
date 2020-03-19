@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Dr. Mohammad Zain Khan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link href="{{ url_for('static', filename='plugins/filter/magnific-popup.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ url_for('static', filename='plugins/animated/headline.css') }}" rel="stylesheet" type="text/css"/>
+
+    <!-- App css -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/icons.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class='uil uil-cell text-primary'></i>Mohammad Zain Khan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--end navbar-toggler-->
+
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn btn-blue btn-sm px-4" href="#" id="lnkPrint"><i
+                            class="'uil uil-print mr-1 font-16"></i>Print</a>
+
+                    <a class="btn btn-blue btn-sm px-4" href="#" data-toggle="modal" data-target="#modalLoginForm"><i
+                            class=""></i>Login</a>
+
+
+                </li>
+            </ul>
+        </div>
+        <!--end collapse-->
+    </div>
+    <!--end container-->
+</nav>
+<!--end nav-->
+<div class="main-wraper">
+
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block scholars %}
+    {% endblock scholars %}
+
+</div>
+<!--end main-wraper-->
+
+<!-- jQuery  -->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/ripple/jquery.ripples.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/animated/headline.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/counter/jquery.counterup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/counter/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/filter/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/filter/masonry.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='plugins/filter/jquery.magnific-popup.min.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
