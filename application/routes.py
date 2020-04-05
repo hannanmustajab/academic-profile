@@ -1,11 +1,12 @@
 import os
 
-from flask import render_template, url_for, redirect
+from flask import render_template, url_for, redirect, flash, session
 
-from application import app
-from application.forms import researchScholarsForm
-from connection import collection
-from scholars import scholarsList
+from application import app, bcrypt, Session
+from application.forms import researchScholarsForm, loginForm
+from application.connection import collection
+from application.scholars import scholarsList
+Session(app)
 
 
 def save_picture(form_picture, name):
@@ -18,9 +19,21 @@ def save_picture(form_picture, name):
     return picture_fname
 
 
-@app.route("/home")
+@app.route('/', methods=['GET', 'POST'])
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    return render_template('home.html', scholarsList=scholarsList)
+    form = loginForm()
+    if form.validate_on_submit():
+        user = collection.find_one({"username": form.username.data})
+        if user:
+            if collection.find_one({'password': form.password.data}):
+                flash(f'Welcome {user["name"]}', 'success')
+                session['username'] = form.username.data
+            else:
+                flash('Please enter a correct password', 'danger')
+        else:
+            flash(f'No such username {form.username.data} exists', 'danger')
+    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'])
 
 
 @app.route("/addscholars", methods=['GET', 'POST'])

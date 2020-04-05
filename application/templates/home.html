@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="main-wraper">
-        {#        Login Form    #}
         <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -12,26 +11,30 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="{{ url_for('login') }}">
+                    <form method="POST" action="">
+                        {% if username %}
+                        Already Logged In
+                        {% else %}
+                                {{ form.hidden_tag() }}
                         <div class="modal-body mx-3">
                             <div class="md-form mb-5">
-                                {{ form.hidden_tag() }}
                                 <i class="fas fa-envelope prefix grey-text"></i>
-                                <input type="email" id="defaultForm-email" class="form-control validate">
+<!--                                <input id="defaultForm-email">-->
                                 {{ form.username.label(class="form-control-label") }}
+                                {{ form.username(class="form-control") }}
                             </div>
 
                             <div class="md-form mb-4">
                                 <i class="fas fa-lock prefix grey-text"></i>
-                                <input type="password" id="defaultForm-pass" class="form-control validate">
                                 {{ form.password.label(class="form-control-label") }}
-
+                                {{ form.password(class="form-control") }}
                             </div>
 
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
                             {{ form.submit(class = "btn btn-lg btn-outline-info") }}
                         </div>
+                        {% endif %}
                     </form>
 
                 </div>
