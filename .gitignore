@@ -1,8 +1,14 @@
 venv
 venv2.7
+<<<<<<< HEAD
 .idea
 .idea/.gitignore
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+=======
+flask_session
+__pycache__
+.idea
+>>>>>>> c6e38e2a9c6008a5de6826ad73d97ea5b7d980e8
