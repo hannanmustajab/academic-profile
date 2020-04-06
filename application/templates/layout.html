@@ -35,10 +35,13 @@
                 <li class="nav-item">
                     <a class="btn btn-blue btn-sm px-4" href="#" id="lnkPrint"><i
                             class="'uil uil-print mr-1 font-16"></i>Print</a>
-
+                    {% if username %}
+                    <a class="btn btn-blue btn-sm px-4" href={{ url_for('logout') }} ><i
+                            class=""></i>Logout</a>
+                    {% else %}
                     <a class="btn btn-blue btn-sm px-4" href="#" data-toggle="modal" data-target="#modalLoginForm"><i
                             class=""></i>Login</a>
-
+                    {% endif %}
 
                 </li>
             </ul>
@@ -64,8 +67,6 @@
     {% block content %}
     {% endblock content %}
 
-    {% block scholars %}
-    {% endblock scholars %}
 
 </div>
 <!--end main-wraper-->
