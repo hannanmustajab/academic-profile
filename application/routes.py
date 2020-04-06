@@ -23,6 +23,10 @@ def save_picture(form_picture, name):
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     form = loginForm()
+
+    if session.get('username') == None:
+        session['username'] = None
+
     if form.validate_on_submit():
         user = collection.find_one({"username": form.username.data})
         if user:
@@ -38,34 +42,37 @@ def home():
 
 @app.route("/addscholars", methods=['GET', 'POST'])
 def addScholars():
-    ScholarsForm = researchScholarsForm()
-    fetch_record = collection.find_one({"cust_id": 12345678})
+    if session.get('username') == None:
+        session['username'] = None
+    if session['username']:
+        ScholarsForm = researchScholarsForm()
+        fetch_record = collection.find_one({"cust_id": 12345678})
 
-    object_id = fetch_record['_id']
+        object_id = fetch_record['_id']
 
-    # Add scholars form
-    if ScholarsForm.validate_on_submit():
-        scholar_name = ScholarsForm.name.data
-        scholar_designation = ScholarsForm.designation.data
-        scholar_bio = ScholarsForm.bio.data
-        scholar_specialization = ScholarsForm.specialization.data
-        picture_file = save_picture(ScholarsForm.photo.data, scholar_name)
-        data = {"scholars":
-            {
-                "scholar_name": scholar_name,
-                "scholar_designation": scholar_designation,
-                "scholar_bio": scholar_bio,
-                "scholar_specialization": scholar_specialization,
-                "img": picture_file
-            }}
+        # Add scholars form
+        if ScholarsForm.validate_on_submit():
+            scholar_name = ScholarsForm.name.data
+            scholar_designation = ScholarsForm.designation.data
+            scholar_bio = ScholarsForm.bio.data
+            scholar_specialization = ScholarsForm.specialization.data
+            picture_file = save_picture(ScholarsForm.photo.data, scholar_name)
+            data = {"scholars":
+                {
+                    "scholar_name": scholar_name,
+                    "scholar_designation": scholar_designation,
+                    "scholar_bio": scholar_bio,
+                    "scholar_specialization": scholar_specialization,
+                    "img": picture_file
+                }}
 
-        request = collection.update({"_id": object_id},
-                                    {"$push": data},
-                                    upsert=True
-                                    )
-        return redirect(url_for('addScholars'))
+            request = collection.update({"_id": object_id},
+                                        {"$push": data},
+                                        upsert=True
+                                        )
+            return redirect(url_for('addScholars'))
 
-    # View all scholars.
-    scholarsList = fetch_record['scholars']
+        # View all scholars.
+        scholarsList = fetch_record['scholars']
 
-    return render_template('scholars.html', form=ScholarsForm, scholarsList=scholarsList)
+        return render_template('scholars.html', form=ScholarsForm, scholarsList=scholarsList)
