@@ -44,35 +44,41 @@ def home():
 def addScholars():
     if session.get('username') == None:
         session['username'] = None
-    if session['username']:
-        ScholarsForm = researchScholarsForm()
-        fetch_record = collection.find_one({"cust_id": 12345678})
 
-        object_id = fetch_record['_id']
+    ScholarsForm = researchScholarsForm()
+    fetch_record = collection.find_one({"cust_id": 12345678})
+
+    object_id = fetch_record['_id']
 
         # Add scholars form
-        if ScholarsForm.validate_on_submit():
-            scholar_name = ScholarsForm.name.data
-            scholar_designation = ScholarsForm.designation.data
-            scholar_bio = ScholarsForm.bio.data
-            scholar_specialization = ScholarsForm.specialization.data
-            picture_file = save_picture(ScholarsForm.photo.data, scholar_name)
-            data = {"scholars":
-                {
-                    "scholar_name": scholar_name,
-                    "scholar_designation": scholar_designation,
-                    "scholar_bio": scholar_bio,
-                    "scholar_specialization": scholar_specialization,
-                    "img": picture_file
-                }}
+    if ScholarsForm.validate_on_submit():
+        scholar_name = ScholarsForm.name.data
+        scholar_designation = ScholarsForm.designation.data
+        scholar_bio = ScholarsForm.bio.data
+        scholar_specialization = ScholarsForm.specialization.data
+        picture_file = save_picture(ScholarsForm.photo.data, scholar_name)
+        data = {"scholars":
+            {
+                "scholar_name": scholar_name,
+                "scholar_designation": scholar_designation,
+                "scholar_bio": scholar_bio,
+                "scholar_specialization": scholar_specialization,
+                "img": picture_file
+            }}
 
-            request = collection.update({"_id": object_id},
-                                        {"$push": data},
-                                        upsert=True
-                                        )
-            return redirect(url_for('addScholars'))
+        request = collection.update({"_id": object_id},
+                                    {"$push": data},
+                                    upsert=True
+                                    )
+        return redirect(url_for('addScholars'))
 
-        # View all scholars.
-        scholarsList = fetch_record['scholars']
+    # View all scholars.
+    scholarsList = fetch_record['scholars']
 
-        return render_template('scholars.html', form=ScholarsForm, scholarsList=scholarsList)
+    return render_template('scholars.html', form=ScholarsForm, scholarsList=scholarsList, username=session['username'])
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session['username'] = None
+    return redirect('home')

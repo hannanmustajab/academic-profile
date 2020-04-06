@@ -1,6 +1,7 @@
 {# Add scholars form here.#}
 {% extends "layout.html" %}
-{% block scholars %}
+{% block content %}
+    {% if username %}
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
 
@@ -131,6 +132,14 @@
         </div>
 
     </div>
+    {% else %}
+    <div class="row">
+        <div class="col-2">
 
-
-{% endblock scholars %}
+        </div>
+        <div class="col-8">
+            <h3> Error, please login and try again! </h3>
+        </div>
+    </div>
+    {% endif %}
+{% endblock content %}
