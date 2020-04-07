@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length
 
 
@@ -9,7 +9,7 @@ class researchScholarsForm(FlaskForm):
                        validators=[DataRequired(), Length(min=2, max=20)])
     designation = StringField('Designation',
                               validators=[DataRequired(), Length(min=2, max=20)])
-    bio = StringField('Bio',
+    bio = TextAreaField('Bio',
                       validators=[DataRequired(), Length(min=2, max=300)])
     specialization = StringField('Interests / Topic',
                                  validators=[DataRequired(), Length(min=2, max=300)])
