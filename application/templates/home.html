@@ -1,4 +1,48 @@
 {% extends "layout.html" %}
+
+{% block style %}
+    @import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+.team4 {
+  font-family: "Montserrat", sans-serif;
+	color: #8d97ad;
+  font-weight: 300;
+}
+.team4 h1, .team4 h2, .team4 h3, .team4 h4, .team4 h5, .team4 h6 {
+  color: #3e4555;
+}
+.team4 .font-weight-medium {
+	font-weight: 500;
+}
+.team4 h5 {
+    line-height: 22px;
+    font-size: 18px;
+}
+.team4 .subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+		font-size: 13px;
+}
+.team4 ul li a {
+  color: #8d97ad;
+  padding-right: 15px;
+  -webkit-transition: 0.1s ease-in;
+  -o-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+}
+.team4 ul li a:hover {
+  -webkit-transform: translate3d(0px, -5px, 0px);
+  transform: translate3d(0px, -5px, 0px);
+	color: #316ce8;
+}
+.team4 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+{% endblock style %}
+
+
+
 {% block content %}
     <div class="main-wraper">
         <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -360,7 +404,7 @@
                                                                 effluents" funded by DST-SERB, New Delhi
                                                             </p>
                                                             <div>
-                                                                <img src="images/users/user-10.jpg" alt=""
+                                                                <img src="static/images/users/user-10.jpg" alt=""
                                                                      class="rounded-circle thumb-md mb-2">
                                                                 <p class="mb-0 text-primary"><b>- Amt. ₹ 36.5 Lakhs</b>
                                                                 </p>
@@ -377,7 +421,7 @@
                                                                 compounds"
                                                             </p>
                                                             <div>
-                                                                <img src="images/users/user-4.jpg" alt=""
+                                                                <img src="static/images/users/user-4.jpg" alt=""
                                                                      class="rounded-circle thumb-md mb-2">
                                                                 <p class="mb-0 text-primary"><b>-Amt. ₹ 11.0 Lakhs</b>
                                                                 </p>
@@ -394,7 +438,7 @@
                                                                 Multinational Ink Manufacturer
                                                             </p>
                                                             <div>
-                                                                <img src="images/users/user-5.jpg" alt=""
+                                                                <img src="static/images/users/user-5.jpg" alt=""
                                                                      class="rounded-circle thumb-md mb-2">
                                                                 <p class="mb-0 text-primary"><b>Completed</b></p>
                                                                 <small class="text-muted"></small>
@@ -431,7 +475,7 @@
                                                             <a class="cbox-gallary1 mfp-image"
                                                                href="images/portfolio/1.jpg" title="Apple">
                                                                 <img class="item-container "
-                                                                     src="images/portfolio/1.jpg" alt="7"/>
+                                                                     src="static/images/portfolio/1.jpg" alt="7"/>
                                                                 <div class="item-mask">
                                                                     <div class="item-caption">
                                                                         <h5 class="text-white">Apple</h5>
@@ -448,8 +492,8 @@
                                                         <div class="item-box">
                                                             <a class="cbox-gallary1 mfp-image"
                                                                href="images/portfolio/2.jpg" title="Samsung">
-                                                                <img class="item-container mfp-fade"
-                                                                     src="images/portfolio/2.jpg" alt="2"/>
+                                                                <img class="static/item-container mfp-fade"
+                                                                     src="static/images/portfolio/2.jpg" alt="2"/>
                                                                 <div class="item-mask">
                                                                     <div class="item-caption">
                                                                         <h5 class="text-light">Samsung</h5>
@@ -466,7 +510,7 @@
                                                         <div class="item-box">
                                                             <a class="cbox-gallary1 mfp-image"
                                                                href="images/portfolio/3.jpg" title="Facebook">
-                                                                <img class="item-container" src="images/portfolio/3.jpg"
+                                                                <img class="item-container" src="static/images/portfolio/3.jpg"
                                                                      alt="4"/>
                                                                 <div class="item-mask">
                                                                     <div class="item-caption">
@@ -484,7 +528,7 @@
                                                         <div class="item-box">
                                                             <a class="cbox-gallary1 mfp-image"
                                                                href="images/portfolio/5.jpg" title="WhatsApp">
-                                                                <img class="item-container" src="images/portfolio/5.jpg"
+                                                                <img class="item-container" src="static/images/portfolio/5.jpg"
                                                                      alt="5"/>
                                                                 <div class="item-mask">
                                                                     <div class="item-caption">
@@ -502,7 +546,7 @@
                                                         <div class="item-box">
                                                             <a class="cbox-gallary1 mfp-image"
                                                                href="images/portfolio/6.jpg" title="Nokia">
-                                                                <img class="item-container" src="images/portfolio/6.jpg"
+                                                                <img class="item-container" src="static/images/portfolio/6.jpg"
                                                                      alt="6"/>
                                                                 <div class="item-mask">
                                                                     <div class="item-caption">
@@ -520,7 +564,7 @@
                                                         <div class="item-box">
                                                             <a class="cbox-gallary1 mfp-image"
                                                                href="images/portfolio/4.jpg" title="Oppo">
-                                                                <img class="item-container" src="images/portfolio/4.jpg"
+                                                                <img class="item-container" src="static/images/portfolio/4.jpg"
                                                                      alt="1"/>
                                                                 <div class="item-mask">
                                                                     <div class="item-caption">
@@ -550,99 +594,204 @@
                         <hr>
                         <section class="section-md">
                             <div class="container">
+                                <div class="py-5 team4">
+        <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-md-7 text-center">
+              <h3 class="mb-3">Our Judges</h3>
+              <h6 class="subtitle">You can rely on our amazing judges to make a sound judgement.</h6>
+            </div>
+          </div>
+          <div class="row">
+            <!-- column  -->
+            <div class="col-lg-3 mb-4">
+                <!-- Row -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <img src="https://res.cloudinary.com/amuroboclub/image/upload/old/team/ProfEkramKhan.jpg" alt="wrapkit" class="img-fluid   circle" />
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <div class="pt-2">
+                      <h5 class="mt-4 font-weight-medium mb-0">Prof. Ekram Khan</h5>
+                      <h6 class="subtitle mb-3">Professor, Electronics Engineering</h6>
+                      <p class="mb-2 mt-2 ">Communication Systems, Signal Processing, Image/Video Coding, Biomedical Image Processing, Image/Video Transmission</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Row -->
+              </div>
+            <div class="col-lg-3 mb-4">
+              <!-- Row -->
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061814.jpg" alt="wrapkit" class="img-fluid   circle" />
+                </div>
+                <div class="col-md-12 text-center mt-4">
+                  <div class="pt-2">
+                    <h5 class="mt-4 font-weight-medium mb-0">Dr. M. Ayyub Khan</h5>
+                    <h6 class="subtitle mb-3">Assistant Professor, Electronics Engineering</h6>
+                    <p class="mb-2 mt-2 ">Image and Video Communication</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Row -->
+            </div>
+            <!-- column  -->
+            <!-- column  -->
 
-                                <div class="jumbotron jumbotron-fluid">
-                                    <div class="container">
-                                        <nav>
-                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
-                                                   href="#nav-home" role="tab" aria-controls="nav-home"
-                                                   aria-selected="true">
-                                                    <h6>Research Projects</h6>
-                                                </a>
-                                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
-                                                   href="#nav-profile" role="tab" aria-controls="nav-profile"
-                                                   aria-selected="false">
-                                                    <h6>PHD Students</h6>
-                                                </a>
-                                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
-                                                   href="#nav-contact" role="tab" aria-controls="nav-contact"
-                                                   aria-selected="false">
-                                                    <h6>Publications</h6>
-                                                </a>
-                                            </div>
-                                        </nav>
-                                        <div class="tab-content" id="nav-tabContent">
-                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                                 aria-labelledby="nav-home-tab">
-                                                <h4 class="my-1 text-dark">Ongoing and completed projects</h4>
-                                            </div>
+            <div class="col-lg-3 mb-4">
+              <!-- Row -->
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061767.jpg" alt="wrapkit" class="img-fluid   circle" />
+                </div>
+                <div class="col-md-12 text-center">
+                  <div class="pt-2">
+                    <h5 class="mt-4 font-weight-medium mb-0">Mr. Ateeb Ahmad Khan</h5>
+                    <h6 class="subtitle mb-3">Assistant Professor, Mechanical Engineering</h6>
+                    <p class="mb-2 mt-2 ">Modelling and analysis of Functionally Graded Stuctures, Composite Structures, FG Sandwich Structure</p>
+                    </div>
+                </div>
+              </div>
+              <!-- Row -->
+            </div>
+            <!-- column  -->
+            <!-- column  -->
 
-                                            <!-- PhD Block  -->
-                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel"
-                                                 aria-labelledby="nav-profile-tab">
-
-
-                                                <!-- ****** Team Section****** -->
-                                                <section id="team2-2" class="team2-2">
-                                                    <div class="section-padding">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div
-                                                                        class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center">
-                                                                    <div class="section-title wow bounceIn">
-                                                                        <h2 data-selector="h2">PhD Research
-                                                                            Scholars </h2>
-                                                                    </div><!-- //title -->
-                                                                </div><!-- //column -->
-                                                            </div><!-- //row -->
-                                                            <div class="row margin">
-
-                                                                {% for scholar in scholarsList %}
-
-
-                                                                    <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-                                                                        <div class="box">
-                                                                            <div><img
-                                                                                    src="{{ url_for('static',filename='images/scholars/danish.jpg') }}"
-                                                                                    alt="Team Member 1"
-                                                                                    data-selector="img" height="150px"
-                                                                                    width="150px">
-                                                                            </div>
-                                                                            <h3 data-selector="h3">{{ scholar.name }}</h3>
-                                                                            <div>
-                                                                                <strong>{{ scholar.designation }}</strong>
-                                                                            </div>
-                                                                            <p class="description "
-                                                                               data-selector="p">{{ scholar.bio }}</p>
-                                                                        </div><!-- //box -->
-                                                                    </div><!-- //column -->
-
-                                                                {% endfor %}
-
-
-                                                            </div><!-- //row -->
-                                                        </div>
-                                                        <!--//container-->
-                                                    </div>
-                                                    <!--//section padding-->
-                                                </section>
-                                                <!--//team section -->
-
-
-                                            </div>
-                                            <!-- Phd  Block End -->
-
-
-                                            <div class="tab-pane fade" id="nav-contact" role="tabpanel"
-                                                 aria-labelledby="nav-contact-tab">
-                                                PUBLICATIONS
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="col-lg-3 mb-4">
+              <!-- Row -->
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524271/profile_img/10059304.jpg" alt="wrapkit" class="img-fluid   circle" />
+                </div>
+                <div class="col-md-12 text-center">
+                  <div class="pt-2">
+                    <h5 class="mt-4 font-weight-medium mb-0">Mr. Asad Mohammad Khan</h5>
+                    <h6 class="subtitle mb-3">Assistant Professor, Computer Engineering</h6>
+                    <p class="mb-2 mt-2 ">Data mining, Machine Learning, Genetic Algorithms and Optimization Problems.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Row -->
+            </div>
+            <!-- column  -->
+            <!-- column  -->
+            <div class="col-lg-3 mb-4">
+              <!-- Row -->
+              <div class="row">
+                <div class="col-md-12">
+                  <img src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10074838.jpg" alt="wrapkit" class="img-fluid circle" />
+                </div>
+                <div class="col-md-12 text-center">
+                  <div class="pt-2">
+                    <h5 class="mt-4 font-weight-medium mb-0">Dr. Mohammad Tariq</h5>
+                    <h6 class="subtitle mb-3">Assistant Professor, Electrical Engineering</h6>
+                    <p class="mb-2 mt-2 ">1. Power Electronic Converters. 2. Electrical Drives 3. Energy Storage Systems 4. Renewable Energy Systems 5. Electric Vehicle 6. Insulation Systems</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Row -->
+            </div>
+          </div>
+        </div>
+      </div>
                             </div>
                         </section>
+<!--                        <section class="section-md">-->
+<!--                            <div class="container">-->
+
+<!--                                <div class="jumbotron jumbotron-fluid">-->
+<!--                                    <div class="container">-->
+<!--                                        <nav>-->
+<!--                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">-->
+<!--                                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"-->
+<!--                                                   href="#nav-home" role="tab" aria-controls="nav-home"-->
+<!--                                                   aria-selected="true">-->
+<!--                                                    <h6>Research Projects</h6>-->
+<!--                                                </a>-->
+<!--                                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"-->
+<!--                                                   href="#nav-profile" role="tab" aria-controls="nav-profile"-->
+<!--                                                   aria-selected="false">-->
+<!--                                                    <h6>PHD Students</h6>-->
+<!--                                                </a>-->
+<!--                                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"-->
+<!--                                                   href="#nav-contact" role="tab" aria-controls="nav-contact"-->
+<!--                                                   aria-selected="false">-->
+<!--                                                    <h6>Publications</h6>-->
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                        </nav>-->
+<!--                                        <div class="tab-content" id="nav-tabContent">-->
+<!--                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"-->
+<!--                                                 aria-labelledby="nav-home-tab">-->
+<!--                                                <h4 class="my-1 text-dark">Ongoing and completed projects</h4>-->
+<!--                                            </div>-->
+
+<!--                                            &lt;!&ndash; PhD Block  &ndash;&gt;-->
+<!--                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel"-->
+<!--                                                 aria-labelledby="nav-profile-tab">-->
+
+
+<!--                                                &lt;!&ndash; ****** Team Section****** &ndash;&gt;-->
+<!--                                                <section id="team2-2" class="team2-2">-->
+<!--                                                    <div class="section-padding">-->
+<!--                                                        <div class="container">-->
+<!--                                                            <div class="row">-->
+<!--                                                                <div-->
+<!--                                                                        class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12 text-center">-->
+<!--                                                                    <div class="section-title wow bounceIn">-->
+<!--                                                                        <h2 data-selector="h2">PhD Research-->
+<!--                                                                            Scholars </h2>-->
+<!--                                                                    </div>&lt;!&ndash; //title &ndash;&gt;-->
+<!--                                                                </div>&lt;!&ndash; //column &ndash;&gt;-->
+<!--                                                            </div>&lt;!&ndash; //row &ndash;&gt;-->
+<!--                                                            <div class="row margin">-->
+
+<!--                                                                {% for scholar in scholarsList %}-->
+
+
+<!--                                                                    <div class="col-md-3 col-sm-6 col-xs-12 text-center">-->
+<!--                                                                        <div class="box">-->
+<!--                                                                            <div><img-->
+<!--                                                                                    src="{{ url_for('static',filename='images/scholars/danish.jpg') }}"-->
+<!--                                                                                    alt="Team Member 1"-->
+<!--                                                                                    data-selector="img" height="150px"-->
+<!--                                                                                    width="150px">-->
+<!--                                                                            </div>-->
+<!--                                                                            <h3 data-selector="h3">{{ scholar.name }}</h3>-->
+<!--                                                                            <div>-->
+<!--                                                                                <strong>{{ scholar.designation }}</strong>-->
+<!--                                                                            </div>-->
+<!--                                                                            <p class="description "-->
+<!--                                                                               data-selector="p">{{ scholar.bio }}</p>-->
+<!--                                                                        </div>&lt;!&ndash; //box &ndash;&gt;-->
+<!--                                                                    </div>&lt;!&ndash; //column &ndash;&gt;-->
+
+<!--                                                                {% endfor %}-->
+
+
+<!--                                                            </div>&lt;!&ndash; //row &ndash;&gt;-->
+<!--                                                        </div>-->
+<!--                                                        &lt;!&ndash;//container&ndash;&gt;-->
+<!--                                                    </div>-->
+<!--                                                    &lt;!&ndash;//section padding&ndash;&gt;-->
+<!--                                                </section>-->
+<!--                                                &lt;!&ndash;//team section &ndash;&gt;-->
+
+
+<!--                                            </div>-->
+<!--                                            &lt;!&ndash; Phd  Block End &ndash;&gt;-->
+
+
+<!--                                            <div class="tab-pane fade" id="nav-contact" role="tabpanel"-->
+<!--                                                 aria-labelledby="nav-contact-tab">-->
+<!--                                                PUBLICATIONS-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </section>-->
 
 
                         <section class="section-md contact-form">
