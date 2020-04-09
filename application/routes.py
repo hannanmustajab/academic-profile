@@ -55,7 +55,7 @@ def addScholars():
 
     object_id = fetch_record['_id']
 
-    
+
     if form.validate_on_submit():
         user = collection.find_one({"username": form.username.data})
         if user:
