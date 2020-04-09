@@ -1,7 +1,9 @@
 {# Add scholars form here.#}
 {% extends "layout.html" %}
 {% block content %}
+
     {% if username %}
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
 
@@ -11,90 +13,90 @@
 
                 <div class="col-lg-auto ">
                     <form action="" method="post" enctype="multipart/form-data">
-                        {{ form.hidden_tag() }}
+                        {{ scholarsForm.hidden_tag() }}
                         <fieldset class="form-group">
 
                             <div class="form-group">
-                                {{ form.name.label(class="form-control-label") }}
+                                {{ scholarsForm.name.label(class="form-control-label") }}
 
 
-                                {% if form.name.errors %}
-                                    {{ form.name(class ="form-control form-control-lg is-invalid") }}
+                                {% if scholarsForm.name.errors %}
+                                    {{ scholarsForm.name(class ="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">
-                                        {% for error in form.name.errors %}
+                                        {% for error in scholarsForm.name.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.name(class="form-control form-control-lg") }}
+                                    {{ scholarsForm.name(class="form-control form-control-lg") }}
                                 {% endif %}
 
                             </div>
 
                             <div class="form-group">
-                                {{ form.designation.label(class="form-control-label") }}
-                                {% if form.designation.errors %}
-                                    {{ form.designation(class ="form-control form-control-lg is-invalid") }}
+                                {{ scholarsForm.designation.label(class="form-control-label") }}
+                                {% if scholarsForm.designation.errors %}
+                                    {{ scholarsForm.designation(class ="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">
-                                        {% for error in form.designation.errors %}
+                                        {% for error in scholarsForm.designation.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.designation(class="form-control form-control-lg") }}
+                                    {{ scholarsForm.designation(class="form-control form-control-lg") }}
                                 {% endif %}
 
                             </div>
 
                             <div class="form-group">
-                                {{ form.bio.label(class="form-control-label") }}
-                                {% if form.bio.errors %}
-                                    {{ form.bio(class ="form-control form-control-lg is-invalid", rows=5) }}
+                                {{ scholarsForm.bio.label(class="form-control-label") }}
+                                {% if scholarsForm.bio.errors %}
+                                    {{ scholarsForm.bio(class ="form-control form-control-lg is-invalid", rows=5) }}
                                     <div class="invalid-feedback">
-                                        {% for error in form.bio.errors %}
+                                        {% for error in scholarsForm.bio.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.bio(class="form-control form-control-lg", rows=5) }}
+                                    {{ scholarsForm.bio(class="form-control form-control-lg", rows=5) }}
                                 {% endif %}
 
                             </div>
 
 
                             <div class="form-group">
-                                {{ form.specialization.label(class="form-control-label") }}
-                                {% if form.specialization.errors %}
-                                    {{ form.specialization(class ="form-control form-control-lg is-invalid") }}
+                                {{ scholarsForm.specialization.label(class="form-control-label") }}
+                                {% if scholarsForm.specialization.errors %}
+                                    {{ scholarsForm.specialization(class ="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">
-                                        {% for error in form.specialization.errors %}
+                                        {% for error in scholarsForm.specialization.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.specialization(class="form-control form-control-lg") }}
+                                    {{ scholarsForm.specialization(class="form-control form-control-lg") }}
                                 {% endif %}
 
                             </div>
                             {# Image Upload #}
                             <div class="form-group">
-                                {{ form.photo.label(class="form-control-label") }}
-                                {% if form.photo.errors %}
-                                    {{ form.photo(class ="form-control form-control-lg is-invalid") }}
+                                {{ scholarsForm.photo.label(class="form-control-label") }}
+                                {% if scholarsForm.photo.errors %}
+                                    {{ scholarsForm.photo(class ="form-control form-control-lg is-invalid") }}
                                     <div class="invalid-feedback">
-                                        {% for error in form.photo.errors %}
+                                        {% for error in scholarsForm.photo.errors %}
                                             <span>{{ error }}</span>
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.photo(class="form-control form-control-lg") }}
+                                    {{ scholarsForm.photo(class="form-control form-control-lg") }}
                                 {% endif %}
 
                             </div>
 
 
                             <div class="form-group">
-                                {{ form.submit(class = "btn btn-dark btn-lg btn-outline-info") }}
+                                {{ scholarsForm.submit(class = "btn btn-dark btn-lg btn-outline-info") }}
                             </div>
 
                         </fieldset>
@@ -133,6 +135,46 @@
 
     </div>
     {% else %}
+    <div class="main-wraper">
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST" action="">
+                        {% if username %}
+                        Already Logged In
+                        {% else %}
+                                {{ form.hidden_tag() }}
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+<!--                                <input id="defaultForm-email">-->
+                                {{ form.username.label(class="form-control-label") }}
+                                {{ form.username(class="form-control") }}
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <i class="fas fa-lock prefix grey-text"></i>
+                                {{ form.password.label(class="form-control-label") }}
+                                {{ form.password(class="form-control") }}
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            {{ form.submit(class = "btn btn-lg btn-outline-info") }}
+                        </div>
+                        {% endif %}
+                    </form>
+
+                </div>
+            </div>
+        </div>
     <div class="row">
         <div class="col-2">
 

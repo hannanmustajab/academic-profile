@@ -4,7 +4,7 @@ from flask import render_template, url_for, redirect, flash, session
 
 from application import app, bcrypt, Session
 from application.forms import researchScholarsForm, loginForm
-from application.connection import collection
+from application.connection import collection, db
 from application.scholars import scholarsList
 Session(app)
 
@@ -23,6 +23,7 @@ def save_picture(form_picture, name):
 @app.route("/home", methods=['GET', 'POST'])
 def home():
     form = loginForm()
+    fetch_record = collection.find_one({"cust_id": 12345678})
 
     if session.get('username') == None:
         session['username'] = None
@@ -37,6 +38,9 @@ def home():
                 flash('Please enter a correct password', 'danger')
         else:
             flash(f'No such username {form.username.data} exists', 'danger')
+
+
+    scholarsList = fetch_record['scholars']
     return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'])
 
 
@@ -45,11 +49,23 @@ def addScholars():
     if session.get('username') == None:
         session['username'] = None
 
+    form = loginForm()
     ScholarsForm = researchScholarsForm()
     fetch_record = collection.find_one({"cust_id": 12345678})
 
     object_id = fetch_record['_id']
 
+
+    if form.validate_on_submit():
+        user = collection.find_one({"username": form.username.data})
+        if user:
+            if collection.find_one({'password': form.password.data}):
+                flash(f'Welcome {user["name"]}', 'success')
+                session['username'] = form.username.data
+            else:
+                flash('Please enter a correct password', 'danger')
+        else:
+            flash(f'No such username {form.username.data} exists', 'danger')
         # Add scholars form
     if ScholarsForm.validate_on_submit():
         scholar_name = ScholarsForm.name.data
@@ -73,9 +89,11 @@ def addScholars():
         return redirect(url_for('addScholars'))
 
     # View all scholars.
-    scholarsList = fetch_record['scholars']
 
-    return render_template('scholars.html', form=ScholarsForm, scholarsList=scholarsList, username=session['username'])
+    scholarsList = fetch_record['scholars']
+    print(scholarsList)
+
+    return render_template('scholars.html', form=form, scholarsForm=ScholarsForm, scholarsList=scholarsList, username=session['username'])
 
 
 @app.route('/logout', methods=['GET', 'POST'])
