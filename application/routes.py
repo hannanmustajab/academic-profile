@@ -3,10 +3,11 @@ import os
 from flask import render_template, url_for, redirect, flash, session
 
 from application import app, bcrypt, Session
-from application.forms import researchScholarsForm, loginForm
+from application.forms import researchScholarsForm, loginForm, addProjects
 from application.connection import collection, db
 from application.scholars import scholarsList
 Session(app)
+
 
 
 def save_picture(form_picture, name):
@@ -100,3 +101,65 @@ def addScholars():
 def logout():
     session['username'] = None
     return redirect('home')
+
+"""
+Add Projects 
+"""
+@app.route("/publications", methods=['GET', 'POST'])
+def addPublications():
+    if session.get('username') == None:
+        session['username'] = None
+
+
+    projectsForm = addProjects()
+    fetch_record = collection.find_one({"cust_id": 12345678})
+
+    object_id = fetch_record['_id']
+
+    form = loginForm()
+    if form.validate_on_submit():
+        user = collection.find_one({"username": form.username.data})
+        if user:
+            if collection.find_one({'password': form.password.data}):
+                flash(f'Welcome {user["name"]}', 'success')
+                session['username'] = form.username.data
+            else:
+                flash('Please enter a correct password', 'danger')
+        else:
+            flash(f'No such username {form.username.data} exists', 'danger')
+        # Add scholars form
+
+    if projectsForm.validate_on_submit():
+        title = projectsForm.title.data
+        type = projectsForm.type.data
+        location = projectsForm.location.data
+        year = projectsForm.year.data
+        link = projectsForm.link.data
+
+        data = {"projects":
+            {
+                "project_title": title,
+                "type": type,
+                "location": location,
+                "year": year,
+                "link": link
+            }}
+
+        request = collection.update({"_id": object_id},
+                                    {"$push": data},
+                                    upsert=True
+                                    )
+        return redirect(url_for('addPublications'))
+
+    # View all scholars.
+    try:
+        publicationsList = fetch_record['projects']
+        return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
+                               username=session['username'])
+    except Exception as e:
+        return render_template('projects.html', form=form, projectsForm=projectsForm,
+                               username=session['username'])
+        print(e)
+
+
+
