@@ -35,7 +35,14 @@
 
         <div class="collapse navbar-collapse" id="nav">
             <ul class="navbar-nav ml-auto">
+
                 <li class="nav-item">
+                 {% if username %}
+                     <a class="btn btn-blue btn-sm px-4" href={{ url_for('addScholars') }} ><i
+                            class="font-16"></i>New Research Scholars </a>
+                {%  endif %}
+
+
                     <a class="btn btn-blue btn-sm px-4" href="#" id="lnkPrint"><i
                             class="'uil uil-print mr-1 font-16"></i>Print</a>
                     {% if username %}
