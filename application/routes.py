@@ -150,14 +150,9 @@ def addPublications():
         return redirect(url_for('addPublications'))
 
     # View all scholars.
-    try:
-        publicationsList = collection.find_one()['projects']
-        return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
+    publicationsList = collection.find_one()['projects']
+    return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
                                username=session['username'])
-    except Exception as e:
-        return render_template('projects.html', form=form, projectsForm=projectsForm,
-                               username=session['username'])
-        print(e)
 
 
 
