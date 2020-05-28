@@ -9,7 +9,6 @@ from application.scholars import scholarsList
 Session(app)
 
 
-
 def save_picture(form_picture, name):
     random_hex = name
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -42,14 +41,14 @@ def home():
 
 
     scholarsList = fetch_record['scholars']
-    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'])
+    publicationsList = fetch_record['projects']
+    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'], publicationsList=publicationsList)
 
 
 @app.route("/addscholars", methods=['GET', 'POST'])
 def addScholars():
     if session.get('username') == None:
         session['username'] = None
-
     form = loginForm()
     ScholarsForm = researchScholarsForm()
     fetch_record = collection.find_one({"cust_id": 12345678})
@@ -152,14 +151,9 @@ def addPublications():
         return redirect(url_for('addPublications'))
 
     # View all scholars.
-    try:
-        publicationsList = fetch_record['projects']
-        return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
+    publicationsList = fetch_record['projects']
+    return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
                                username=session['username'])
-    except Exception as e:
-        return render_template('projects.html', form=form, projectsForm=projectsForm,
-                               username=session['username'])
-        print(e)
 
 
 
