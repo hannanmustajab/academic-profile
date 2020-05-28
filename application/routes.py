@@ -48,7 +48,6 @@ def home():
 def addScholars():
     if session.get('username') == None:
         session['username'] = None
-
     form = loginForm()
     ScholarsForm = researchScholarsForm()
     fetch_record = collection.find_one({"cust_id": 12345678})
@@ -152,7 +151,7 @@ def addPublications():
 
     # View all scholars.
     try:
-        publicationsList = fetch_record['projects']
+        publicationsList = collection.find_one()['projects']
         return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
                                username=session['username'])
     except Exception as e:
