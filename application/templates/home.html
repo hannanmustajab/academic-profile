@@ -409,11 +409,14 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-        <div class="card" style="width: 18rem; height: 36rem">
-  <img height="50%" src="https://res.cloudinary.com/amuroboclub/image/upload/old/team/ProfEkramKhan.jpg" class="card-img-top">
+        <div class="card" style="width: 36rem; height: 45rem">
+  <img height="50%" src="static/images/default-image.jpg" class="card-img-top">
   <div class="card-body">
-    <h5 class="card-title">Prof. Ekram Khan</h5>
-    <p class="card-text">Professor, Electronics Engineering</p>
+    <h5 class="card-title">{{ publicationsList[0].project_title }}</h5>
+    <p class="card-text">{{ publicationsList[0].type }}</p>
+    <p class="card-text">{{ publicationsList[0].location }}</p>
+    <p class="text-muted">{{ publicationsList[0].year }}</p>
+      <a href="{{publicationsList[0].link}}" class="btn btn-primary">See More</a>
   </div>
 </div>
 <!--      <img width="500px" height="500px" src="https://res.cloudinary.com/amuroboclub/image/upload/old/team/ProfEkramKhan.jpg" alt="wrapkit">-->
@@ -422,34 +425,39 @@
 <!--        <p>Professor, Electronics Engineering</p>-->
 <!--      </div>-->
     </div>
-    <div class="carousel-item">
-        <div class="card" style="width: 18rem; height: 36rem">
-  <img height="50%" src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061814.jpg" class="card-img-top">
+      {% for i in publicationsList[1:] %}
+      <div class="carousel-item">
+      <div class="card" style="width: 36rem; height: 45rem">
+  <img height="50%" src="static/images/default-image.jpg" class="card-img-top">
   <div class="card-body">
-    <h5 class="card-title">Dr. M. Ayyub Khan</h5>
-    <p class="card-text">Assistant Professor, Electronics Engineering</p>
+    <h5 class="card-title">{{ i.project_title }}</h5>
+    <p class="card-text">{{ i.type }}</p>
+    <p class="card-text">{{ i.location }}</p>
+    <p class="text-muted">{{ i.year }}</p>
+      <a href="{{i.link}}" class="btn btn-primary">See More</a>
   </div>
-</div>
+      </div>
+      </div>
+      {% endfor %}
 <!--      <img width="500px" height="500px" src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061814.jpg" alt="wrapkit">-->
 <!--      <div class="carousel-caption d-none d-md-block">-->
 <!--        <h5>Dr. M. Ayyub Khan</h5>-->
 <!--        <p>Assistant Professor, Electronics Engineering</p>-->
 <!--      </div>-->
-    </div>
-    <div class="carousel-item">
-        <div class="card" style="width: 18rem; height: 36rem">
-  <img height="50%" src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061767.jpg" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Mr. Ateeb Ahmad Khan</h5>
-    <p class="card-text">Assistant Professor, Mechanical Engineering</p>
-  </div>
-</div>
+<!--    <div class="carousel-item">-->
+<!--        <div class="card" style="width: 18rem; height: 36rem">-->
+<!--  <img height="50%" src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061767.jpg" class="card-img-top">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">Mr. Ateeb Ahmad Khan</h5>-->
+<!--    <p class="card-text">Assistant Professor, Mechanical Engineering</p>-->
+<!--  </div>-->
+<!--</div>-->
 <!--      <img width="500px" height="500px" src="https://res.cloudinary.com/amuroboclub/image/upload/v1567524270/profile_img/10061767.jpg" alt="wrapkit">-->
 <!--      <div class="carousel-caption d-none d-md-block">-->
 <!--        <h5>Mr. Ateeb Ahmad Khan</h5>-->
 <!--        <p>Assistant Professor, Mechanical Engineering</p>-->
 <!--      </div>-->
-    </div>
+<!--    </div>-->
   </div>
   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

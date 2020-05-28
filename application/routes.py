@@ -41,7 +41,8 @@ def home():
 
 
     scholarsList = fetch_record['scholars']
-    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'])
+    publicationsList = fetch_record['projects']
+    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'], publicationsList=publicationsList)
 
 
 @app.route("/addscholars", methods=['GET', 'POST'])
@@ -150,7 +151,7 @@ def addPublications():
         return redirect(url_for('addPublications'))
 
     # View all scholars.
-    publicationsList = collection.find_one()['projects']
+    publicationsList = fetch_record['projects']
     return render_template('projects.html', form=form, projectsForm=projectsForm, publicationsList=publicationsList,
                                username=session['username'])
 
