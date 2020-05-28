@@ -9,7 +9,6 @@ from application.scholars import scholarsList
 Session(app)
 
 
-
 def save_picture(form_picture, name):
     random_hex = name
     _, f_ext = os.path.splitext(form_picture.filename)
