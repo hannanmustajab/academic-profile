@@ -8,7 +8,18 @@ from application.connection import collection, db
 from application.scholars import scholarsList
 Session(app)
 
+achievements =[
+    {'name':'Research Projects','amount':5, 'style':'fa-graduation-cap'},
+    {'name':'Masters Projects','amount':15, 'style':'fa-circle'},
+    {'name':'Bachelors Projects','amount':20, 'style':'fa-circle-thin '},
+    {'name':'Completed Projects','amount':3, 'style':'fa-list'},
+    {'name':'On Going Projects','amount':2,'style':'fa-spinner'},
+    {'name':'Awards Received','amount':5,'style':'fa-trophy'},
+    {'name':'Research Papers','amount':50,'style':'fa-file-o'},
+    {'name':'Books Edited','amount':2, 'style':'fa-book'},
+    {'name':'Chapters Published','amount':12,'style':'fa-file-text-o'}
 
+]
 
 def save_picture(form_picture, name):
     random_hex = name
@@ -42,7 +53,7 @@ def home():
 
 
     scholarsList = fetch_record['scholars']
-    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'])
+    return render_template('home.html', scholarsList=scholarsList, form=form, username=session['username'],achievements=achievements)
 
 
 @app.route("/addscholars", methods=['GET', 'POST'])

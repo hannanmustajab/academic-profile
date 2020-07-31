@@ -11,8 +11,7 @@
     <link href="{{ url_for('static', filename='plugins/filter/magnific-popup.css') }}" rel="stylesheet"
           type="text/css"/>
     <link href="{{ url_for('static', filename='plugins/animated/headline.css') }}" rel="stylesheet" type="text/css"/>
-
-    <!-- App css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">    <!-- App css -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url_for('static', filename='css/icons.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css"/>
@@ -43,7 +42,7 @@
                         <a class="btn btn-blue btn-sm px-4" href={{ url_for('addScholars') }}>
                             <i class="font-16"></i>New Images</a>
 
-                        <a class="btn btn-blue btn-sm px-4" href={{ url_for('addScholars') }}>
+                        <a class="btn btn-blue btn-sm px-4" href={{ url_for('addPublications') }}>
                             <i class="font-16 glyphicon glyphicon-plus"></i>New Projects </a>
 
                     {% endif %}
@@ -86,6 +85,8 @@
 
 
 </div>
+
+
 <!--end main-wraper-->
 
 <!-- jQuery  -->
